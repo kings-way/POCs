@@ -4,7 +4,7 @@
 
 * build image
 
-		cd CVE-2019-5376-POC
+		cd CVE-2019-5376
 		gcc run.c -o run -static
 		docker build -t testpoc .
 
