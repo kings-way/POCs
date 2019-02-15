@@ -15,8 +15,8 @@ use a malicious.so(which used by runc) with  malicious entry point (like #!/proc
 		cd CVE-2019-5376/v1
 		gcc run.c -o run -static
 		gcc run.c -o libseccomp.so.2 -shared -fPIC
-		docker build -t CVE-2019-5376-v1 .
-		docker run CVE-2019-5376-v1
+		docker build -t cve-2019-5376-v1 .
+		docker run cve-2019-5376-v1
 
 
 #### Version 2
@@ -32,8 +32,8 @@ start the malicious container first, and run a process (in a loop) to monitor ne
 
 		cd CVE-2019-5376/v2
 		gcc run.c -o run -static
-		docker build -t CVE-2019-5376-v2 .
-		docker run -it --privileged --name test_instance CVE-2019-5376-v2
+		docker build -t cve-2019-5376-v2 .
+		docker run -it --privileged --name test_instance cve-2019-5376-v2
 		
 		# open another terminal, and run docker exec
 		docker exec -it test_instance bash
