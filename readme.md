@@ -18,7 +18,7 @@
 
 Notes:   
 * original approach from [DragonSector](https://blog.dragonsector.pl/2019/02/cve-2019-5736-escape-from-docker-and.html)  
-use a malicious.so(which used by runc) with  malicious entry point (like #!/proc/self/exe) to hijack the execution of runc, and malicious.so starts another process/thread to open '/proc/self/exe' to hold the file descriptor.  Finally, we are able to write to the fd after the runc exits.
+use a malicious.so(which used by runc) with  malicious entry point (like #!/proc/self/exe) to hijack the execution of runc, and then open '/proc/self/exe' to hold the file descriptor. Then fork-exec to run another process, and the child process will inherit the file descriptor.  Finally, the child process is able to write to the fd after the runc exits.
 > shortcoming: need a malicious entry point program. It's no problem for ```docker run```, but ```docker exec``` has to run that specific program.
 
 * approach used here (also used by the some exploits from others)  
