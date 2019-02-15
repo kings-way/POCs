@@ -22,7 +22,7 @@ use a malicious.so(which used by runc) with  malicious entry point (like #!/proc
 #### Version 2
 start the malicious container first, and run a process (in a loop) to monitor new processes in /proc. On finding a new one, open  '/proc/{pid}/exe' to hold the file descriptor. Then it's the same like above.
 
-> Notes
+> Notes:
 
 > need privileged container
 
